@@ -35,6 +35,7 @@ carro_trabalho = Carro("vermelho", "mustang")
     
 
 # Faça o carro "andar" utilizando os métodos da sua classe.
+carro_passeio.ligar()
 carro_passeio.acelerar_carro()
 
 # Faça o carro "parar" utilizando os métodos da sua classe.
