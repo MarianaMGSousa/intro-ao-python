@@ -18,17 +18,17 @@ def calcular_duracao(funcao):
 
 
 # Aplique seu decorator na função abaixo e veja quanto tempo a busca de um mesmo valor em um set e uma lista demoram para serem executadas
-def encontrar_item(container, item):
+def buscar_item(container, item):
     return item in container
 
 @calcular_duracao
 def main():
     tamanho = 1000000
-    set_grande = set(range(tamanho))
-    lista_grande = list(range(tamanho))
+    set_g = set(range(tamanho))
+    lista_g = list(range(tamanho))
     item = 500399
-    encontrar_item(set_grande, item)
-    encontrar_item(lista_grande, item)
+    buscar_item(set_g, item)
+    buscar_item(lista_g, item)
 
 if __name__ == '__main__':
     main()
