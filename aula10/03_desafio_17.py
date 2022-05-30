@@ -14,3 +14,59 @@
 # Para modelar seu sistema, utilize obrigatoriamente os conceitos "classe", "herança" e "polimorfismo".
 # Opcionalmente, você pode também utilizar "propriedades", "encapsulamento" e "classe abstrata".
 
+
+
+
+class Cliente(): 
+    def __init__(self, nome, telefone, genero, renda_mensal):
+        self._nome = nome
+        self.telefone = telefone
+        self.genero = genero
+        self.renda_mensal = renda_mensal
+        
+    def __str__(self):
+        return f'Cliente: {self._nome}, Telefone: {self.telefone}, Genero: {self.genero}, Renda Mensal: {self.renda_mensal}'
+ 
+class Conta(Cliente):
+    def __init__(self, nome,  genero, renda_mensal, saldo=0):
+        super().__init__(nome, genero, renda_mensal)
+        self.saldo = 0
+        self.correntista = nome
+        self.operações = [("DEPOSITO" , saldo)]
+           
+    def saque(self, valor):
+        if self.saldo >= valor:
+            self.saldo -= valor
+            self.operações += [("SAQUE" , valor)]
+        else:
+            print("Saldo insuficiente")
+        
+    def deposito(self, valor):
+        self.saldo += valor
+        self.operações += {("DEPOSITO" , valor)}
+        
+    def extrato(self):
+        print("EXTRATO: ")
+        for op in self.operacoes:
+            print("%10s %10.2f\n" % (op[0], op[1]))
+        print("\n Saldo: %10.2f\n" % self.saldo)
+              
+
+    
+class ChequeEspecial(Conta):
+    def __init__(self, nome,  genero, renda_mensal, saldo=0):
+        super().__init__(self, nome, genero, renda_mensal, saldo)
+        self.limite = renda_mensal
+    
+    def saque(self, valor):
+        if self.saldo + self.limite >= valor:
+            self.saldo -= valor
+            self.operações.append[("SAQUE" , valor)]   
+            return True
+        else:
+            return self.saque(valor)
+        
+cliente1 = Cliente ("Mariana", 71999999999, "F", 5000)  
+conta = ChequeEspecial([cliente1], 1000) 
+
+#Ainda não consegui terminar esse desafio mas segue até onde eu consegui desenvolver.
